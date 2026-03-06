@@ -1,0 +1,43 @@
+package com.kauecaco.caixa.controller;
+
+import com.kauecaco.caixa.models.Movimento;
+import com.kauecaco.caixa.models.Saldo;
+import com.kauecaco.caixa.repositories.SaldoRepository;
+import com.kauecaco.caixa.services.MovimentoService;
+import org.apache.logging.log4j.message.Message;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.*;
+
+import java.time.LocalDate;
+import java.util.List;
+
+@Controller
+@RequestMapping("/caixa")
+public class MovimentoController {
+    @Autowired
+    private MovimentoService movimentoService;
+
+    @GetMapping("/extrato")
+    public ResponseEntity<List<Movimento>> pegarExtrato(@RequestParam LocalDate data){
+        List<Movimento> extrato = movimentoService.getMovimentos(data);
+        if (extrato == null){
+            ResponseEntity.notFound();
+        }
+        return ResponseEntity.ok(extrato);
+    }
+    @GetMapping
+    public ResponseEntity<Saldo> pegarSaldoAtual(@RequestParam LocalDate data){
+        Saldo saldo = movimentoService.getSaldo(data);
+        return ResponseEntity.ok(saldo);
+    }
+
+    @PostMapping
+    public ResponseEntity<Movimento> novoMovimento(@RequestBody Movimento m){
+        return ResponseEntity.ok(movimentoService.criarMovimento(m));
+    }
+
+
+}
