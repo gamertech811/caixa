@@ -20,7 +20,7 @@ public class MovimentoService {
 
         movimentoRepository.save(movimento);
         if (!saldoRepository.existsByData(movimento.getData())){
-            Saldo saldoAnt = saldoRepository.findTopByDataLessThanOrderByData(movimento.getData()).orElse(new Saldo(0,movimento.getData()));
+            Saldo saldoAnt = saldoRepository.findTopByDataLessThanOrderByDataDesc(movimento.getData()).orElse(new Saldo(0,movimento.getData()));
             Saldo saldoNovo = new Saldo(saldoAnt.getValor(), movimento.getData());
             saldoRepository.save(saldoNovo);
         }

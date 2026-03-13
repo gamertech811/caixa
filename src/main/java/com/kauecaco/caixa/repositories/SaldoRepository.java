@@ -13,7 +13,7 @@ import java.util.Optional;
 
 public interface SaldoRepository extends JpaRepository<Saldo, Integer> {
     boolean existsByData(LocalDate data);
-    Optional<Saldo> findTopByDataLessThanOrderByData(LocalDate data);
+    Optional<Saldo> findTopByDataLessThanOrderByDataDesc(LocalDate data);
     Saldo findByData(LocalDate data);
 
 
