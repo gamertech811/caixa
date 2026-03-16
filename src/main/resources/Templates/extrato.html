@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Extrato</title>
+    <style>
+        body {
+            background-color: #0a0a0a;
+            color: white;
+            font-family: sans-serif;
+            padding: 40px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .loud {
+            color: #2ecc71;
+            font-size: 2.5rem;
+            font-weight: 900;
+            letter-spacing: 4px;
+            margin-bottom: 30px;
+            text-shadow: 0 0 10px rgba(46, 204, 113, 0.5);
+        }
+
+        .coringa {
+            width: 100%;
+            max-width: 700px;
+            background: #141414;
+            padding: 25px;
+            border-radius: 8px;
+            border-left: 4px solid #2ecc71;
+        }
+
+        .nsei {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 25px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        input[type="date"] {
+            padding: 10px;
+            background: #222;
+            border: 1px solid #333;
+            color: white;
+            border-radius: 4px;
+        }
+
+        .busca, .pdf {
+            border: none;
+            padding: 10px 20px;
+            border-radius: 4px;
+            font-weight: bold;
+            cursor: pointer;
+            text-transform: uppercase;
+            transition: 0.3s;
+        }
+
+        .busca {
+            background: #2ecc71;
+            color: black;
+        }
+
+        .busca:hover {
+            background: #27ae60;
+        }
+
+        .pdf {
+            background: #ffffff;
+            color: black;
+        }
+
+        .pdf:hover {
+            background: #cccccc;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        th {
+            text-align: left;
+            border-bottom: 2px solid #333;
+            padding: 12px;
+            color: #2ecc71;
+            font-size: 0.8rem;
+        }
+
+        td {
+            padding: 12px;
+            border-bottom: 1px solid #222;
+        }
+
+        .entrada {
+            color: #2ecc71; font-weight: bold;
+        }
+        .saida {
+            color: #ff4d4d; font-weight: bold;
+        }
+
+        .volta {
+            display: block;
+            margin-top: 25px;
+            color: #888;
+            text-decoration: none;
+            font-size: 0.9rem;
+            text-align: center;
+        }
+        .volta:hover {
+            color: #fff;
+        }
+    </style>
+</head>
+<body>
+
+<h1 class="loud">CAIXA DA LOUD</h1>
+
+<div class="coringa">
+    <div class="nsei">
+        <input type="date" id="data">
+        <button class="busca" onclick="buscar()">BUSCAR</button>   <!--bct-->
+        <button class="pdf" onclick="gerarPDF()">PDF</button>    <!--nsei-->
+    </div>
+
+    <table>
+        <thead>
+        <tr>
+            <th>DESCRIÇÃO</th>
+            <th>VALOR</th>
+            <th>DATA</th>
+        </tr>
+        </thead>
+        <tbody id="tabela"></tbody>
+    </table>
+
+    <a href="/movimentacao" class="volta">Voltar ao Início</a>
+</div>
+</body>
+</html>
