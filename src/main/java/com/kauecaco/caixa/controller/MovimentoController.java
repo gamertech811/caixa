@@ -15,7 +15,7 @@ import java.time.LocalDate;
 import java.util.List;
 
 @Controller
-@RequestMapping("/caixa")
+@RequestMapping("/api")
 public class MovimentoController {
     @Autowired
     private MovimentoService movimentoService;
