@@ -10,4 +10,3 @@ public interface MovimentoRepository extends JpaRepository<Movimento, Integer> {
     public List<Movimento> findAllByData(LocalDate data);
     boolean existsByData(LocalDate data);
 }
-//rafael baba
