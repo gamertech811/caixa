@@ -36,7 +36,6 @@ public class PDFService {
         Font fonte10Bold = new Font(Font.FontFamily.HELVETICA, 10, Font.BOLD);
         Font fonte18Bold = new Font(Font.FontFamily.HELVETICA, 18, Font.BOLD);
 
-        // Título
         PdfPTable tabelaTitulo = new PdfPTable(1);
         tabelaTitulo.getDefaultCell().setBorder(0);
 
@@ -47,15 +46,12 @@ public class PDFService {
 
         document.add(tabelaTitulo);
 
-        // Espaço
         document.add(new Phrase(" "));
 
-        // Tabela de movimentos
         PdfPTable tabelaMovimentos = new PdfPTable(4);
         tabelaMovimentos.setWidthPercentage(100);
         tabelaMovimentos.getDefaultCell().setBorder(0);
 
-        // Cabeçalho
         tabelaMovimentos.addCell(new Phrase("Tipo", fonte10Bold));
         tabelaMovimentos.addCell(new Phrase("Descrição", fonte10Bold));
         tabelaMovimentos.addCell(new Phrase("Data", fonte10Bold));
@@ -65,7 +61,6 @@ public class PDFService {
         celula.setBorder(0);
         tabelaMovimentos.addCell(celula);
         double saldo = 0;
-        // Dados
         for (Movimento mov : todosMovimentos) {
             saldo += mov.getTipo() == 1 ? mov.getValor() : -mov.getValor();
             String tipo = mov.getTipo() == 1 ? "Entrada" : "Saída";
@@ -89,7 +84,6 @@ public class PDFService {
         valorSaldo.setHorizontalAlignment(Element.ALIGN_RIGHT);
         valorSaldo.setBorder(0);
 
-// opcional: linha em cima
         celulaSaldo.setBorderWidthTop(1);
         valorSaldo.setBorderWidthTop(1);
 
